@@ -1,0 +1,39 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package assignmentjava2;
+
+import java.io.*;
+import static java.lang.System.out;
+import java.nio.file.*;
+//import.java.util.*;
+//import.java.util.Scanner;
+/**
+ *
+ * @author 70060112
+ */
+public class AssignmentJava2 {
+
+    /**
+     * @param args the command line arguments
+     * @throws java.io.IOException
+     */
+    public static void main(String[] args) throws IOException {
+        try { 
+            Path fileIn = Paths.get("Yourname.txt");
+            String fileout = "Yourname.bin";
+            byte[] buffer = Files.readAllBytes(fileIn);
+            System.out.println("Wrote " + buffer.length + " bytes");
+            
+            
+            } catch (IOException e) {
+            
+                out.println("File not found");
+        }
+                    
+        }
+    }
+    
+

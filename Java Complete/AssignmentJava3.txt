@@ -1,0 +1,54 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package assignment3;
+
+import java.io.*;
+import java.nio.file.*;
+import static java.nio.file.StandardOpenOption.*;
+
+
+/**
+ *
+ * @author 70060112
+ */
+public class Assignment3 {
+
+    /**
+     * @param args the command line arguments
+     * @throws java.io.IOException
+     */
+    public static void main(String[] args) throws IOException {
+        
+        String filein = "Yourname.bin";
+        Path fileout = Paths.get("Last.txt");
+        String allwords = "";
+        byte[] buffer = new byte[100];
+        int total;
+        try (FileInputStream inputStream = new FileInputStream(filein)) {
+            total = 0;
+            int nRead = 0;
+            while((nRead = inputStream.read(buffer)) != -1)
+                
+            {
+                String thisBuffer = new String(buffer);
+                allwords = allwords + thisBuffer;
+                total += nRead;
+                
+            }
+        }
+        System.out.println("Read " + total + " bytes");
+        System.out.println(allwords);
+        
+        
+        byte data[] = allwords.getBytes();
+        try (OutputStream out = new BufferedOutputStream(Files.newOutputStream(fileout, CREATE))) {
+            out.write(data, 0, data.length);
+        }
+
+
+    }
+    
+}
